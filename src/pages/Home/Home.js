@@ -1,7 +1,7 @@
-import Header from "../../Header/Header";
+import Header from "../../components/Header/Header";
+import Sidebar from "../../components/sidebar/Sidebar";
+import Posts from "../posts/Posts";
 import "./home.css";
-import Posts from "./posts/Posts";
-import Sidebar from "./sidebar/Sidebar";
 
 export default function Home() {
   return (
