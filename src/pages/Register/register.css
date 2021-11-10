@@ -1,0 +1,46 @@
+.register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.registerTitle {
+  font-size: 50px;
+}
+
+.registerForm {
+  width: 40vw;
+  padding: 15px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background: rgba(219, 219, 219, 0.849);
+}
+
+.registerForm > label {
+  margin: 10px 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+.registerInput {
+  padding: 10px;
+  background: #fff;
+  border-radius: 5px;
+  border: none;
+}
+
+.registerButton {
+  margin-top: 20px;
+  background: rgb(128, 186, 240);
+  border-radius: 5px;
+  border: none;
+  font-size: 20px;
+  color: rgb(51, 51, 51);
+  width: 100px;
+  padding: 5px 10px;
+  align-self: center;
+  cursor: pointer;
+}
