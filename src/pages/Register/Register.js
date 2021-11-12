@@ -1,17 +1,29 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./register.css";
 
 function Register() {
-  const [name, setName] = useState("");
+  const [userName, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [err, setError] = useState(false);
 
   // hadle submit
   const onSubmit = async (event) => {
     event.preventDefault();
-    console.log("name : ", name);
-    console.log("Email : ", email);
-    console.log("password : ", password);
+    try {
+      setError(false);
+      const res = await axios.post("http://localhost:3001/register", {
+        userName,
+        email,
+        password,
+      });
+      // after reg. switching the page to login
+      res.data.details && window.location.replace("/login");
+    } catch (err) {
+      setError(true);
+      console.log(err);
+    }
   };
 
   return (
@@ -23,7 +35,7 @@ function Register() {
           type="text"
           className="registerInput"
           placeholder="Enter User Name"
-          name="name"
+          name="userName"
           onChange={(e) => setName(e.target.value)}
         />
         <label>Email : </label>

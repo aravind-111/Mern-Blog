@@ -1,16 +1,37 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useContext, useRef, useState } from "react";
+import { Context } from "../../context/Context";
 import "./login.css";
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [passowrd, setPassword] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [passowrd, setPassword] = useState("");
 
+  // instead of using "useState" for email and password we r using "useRef".
+  let userRef = useRef();
+  let passwordRef = useRef();
+
+  const { dispatch, isFetching } = useContext(Context);
   // on Submit
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
-    console.log("email", email);
-    console.log("password", passowrd);
+    dispatch({ type: "LOGIN_START" });
+    try {
+      // console.log(userRef.current.value, passwordRef.current.value);
+      const res = await axios.post("http://localhost:3001/login", {
+        userName: userRef.current.value,
+        password: passwordRef.current.value,
+      });
+      console.log(res);
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
+      userRef = "";
+      passwordRef = "";
+    } catch {
+      // console.log("hello");
+      dispatch({ type: "LOGIN_FAILURE" });
+    }
   };
+  console.log(isFetching);
   return (
     <div className="login">
       <span className="loginTitle">Login</span>
@@ -20,14 +41,14 @@ function Login() {
           className="loginInput"
           type="text"
           placeholder="Enter Email ID"
-          onChange={(e) => setEmail(e.target.value)}
+          ref={userRef}
         />
         <label>Password : </label>
         <input
           className="loginInput"
           type="text"
           placeholder="Enter Password"
-          onChange={(e) => setPassword(e.target.value)}
+          ref={passwordRef}
         />
         <button type="submit" className="loginButton">
           Login
