@@ -1,5 +1,5 @@
 import "./post.css";
-import Posts from "../../pages/posts/Posts";
+// import Posts from "../../pages/posts/Posts";
 import { Link } from "react-router-dom";
 
 export default function Post({ post }) {

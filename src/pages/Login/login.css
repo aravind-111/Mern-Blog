@@ -37,7 +37,7 @@
 
 .loginButton {
   margin-top: 20px;
-  background: rgb(128, 186, 240);
+  background: rgb(0, 132, 255);
   border-radius: 5px;
   border: none;
   color: #fff;
@@ -47,4 +47,11 @@
   padding: 5px 10px;
   align-self: center;
   cursor: pointer;
+}
+
+.login_fail {
+  color: red;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
 }

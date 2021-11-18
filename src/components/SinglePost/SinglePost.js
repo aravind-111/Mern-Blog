@@ -10,7 +10,7 @@ function SinglePost() {
   const [post, setPost] = useState({});
   const location = useLocation();
   const { user } = useContext(Context);
-  console.log(post.userName);
+  console.log(user.user);
 
   //update states
   const [title, setTitle] = useState("");
@@ -37,15 +37,11 @@ function SinglePost() {
     getSinglePost();
   }, [postId]);
 
-  // console.log(post);
-  // console.log(user);
-  // console.log(post.username === user.username);
-
   //delete post
   const handleDelete = async () => {
     try {
-      console.log("delete in process");
-      console.log("post Id", postId);
+      // console.log("delete in process");
+      // console.log("post Id", postId);
       const res = await axios.delete(
         `https://mern-blog-server-aravind.herokuapp.com/post/${post._id}`,
         {
@@ -97,10 +93,18 @@ function SinglePost() {
         ) : (
           <h1 className="singlePostTitle">
             {title}
-            {user && user.userName === post.userName && (
+            {user.user && user.user.userName === post.userName && (
               <div className="singlePostEdit">
-                <Edit color="primary" onClick={() => setUpdatePost(true)} />
-                <Delete style={{ color: "tomato" }} onClick={handleDelete} />
+                <Edit
+                  className="buttons"
+                  color="primary"
+                  onClick={() => setUpdatePost(true)}
+                />
+                <Delete
+                  className="buttons"
+                  style={{ color: "tomato" }}
+                  onClick={handleDelete}
+                />
               </div>
             )}
           </h1>
@@ -125,7 +129,7 @@ function SinglePost() {
             onChange={(e) => setDesc(e.target.value)}
           />
         ) : (
-          <p className="singlePostDesc">{post.desc}</p>
+          <p className="singlePostDesc">{desc}</p>
         )}
         {updatePost && (
           <button className="update" type="submit" onClick={handleUpdate}>

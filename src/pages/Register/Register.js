@@ -6,13 +6,13 @@ function Register() {
   const [userName, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [err, setError] = useState(false);
+  // const [err, setError] = useState(false);
 
   // hadle submit
   const onSubmit = async (event) => {
     event.preventDefault();
     try {
-      setError(false);
+      // setError(false);
       const res = await axios.post(
         "https://mern-blog-server-aravind.herokuapp.com/register",
         {
@@ -24,7 +24,7 @@ function Register() {
       // after reg. switching the page to login
       res.data.details && window.location.replace("/login");
     } catch (err) {
-      setError(true);
+      // setError(true);
       console.log(err);
     }
   };
@@ -33,11 +33,11 @@ function Register() {
     <div className="register">
       <span className="registerTitle">Register</span>
       <form className="registerForm" onSubmit={onSubmit}>
-        <label>User Name : </label>
+        <label>User ID : </label>
         <input
           type="text"
           className="registerInput"
-          placeholder="Enter User Name"
+          placeholder="Enter User ID"
           name="userName"
           onChange={(e) => setName(e.target.value)}
         />

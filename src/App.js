@@ -3,14 +3,14 @@ import TopBar from "./components/topbar/TopBar";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
-import { Context } from "./context/Context";
-import { useContext } from "react";
+// import { Context } from "./context/Context";
+// import { useContext } from "react";
 import Write from "./pages/write/Write";
 import Posts from "./pages/posts/Posts";
 import Single from "./components/Single/Single";
 
 function App() {
-  const { user } = useContext(Context);
+  // const { user } = useContext(Context);
   return (
     <div>
       <BrowserRouter>

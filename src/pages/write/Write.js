@@ -1,5 +1,4 @@
 import AddIcon from "@mui/icons-material/Add";
-import userEvent from "@testing-library/user-event";
 import axios from "axios";
 import React, { useContext, useState } from "react";
 import { Context } from "../../context/Context";
@@ -33,7 +32,7 @@ function Write() {
       newPost.photo = filename;
 
       try {
-        const res = await axios.post(
+        await axios.post(
           "https://mern-blog-server-aravind.herokuapp.com/upload",
           data
         );
