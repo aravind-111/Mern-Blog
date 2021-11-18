@@ -1,30 +1,36 @@
 import "./post.css";
+import Posts from "../../pages/posts/Posts";
+import { Link } from "react-router-dom";
 
-export default function Post() {
+export default function Post({ post }) {
+  const PF = "https://mern-blog-server-aravind.herokuapp.com/images/";
+  console.log(post);
   return (
-    <div className="post">
-      <img
-        src="https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg"
-        alt=""
-      />
-      <div className="postInfo">
-        <div className="postCats">
-          <span className="postCat">Music</span>
-          <span className="postCat">Life</span>
+    <div className="post" key={post._id}>
+      {post.photo ? (
+        <img src={PF + post.photo} alt="cat" />
+      ) : (
+        <div>
+          <h2>Image not fond</h2>
         </div>
-        <span className="postHead">Lorem ipsum dolor sit amet</span>
-        <hr />
-        <span className="postDate">1 hour ago</span>
+      )}
+
+      <div className="post_info">
+        <div className="post_categories">
+          {post.categories.map((cate, index) => {
+            return (
+              <span key={index} className="post_cate">
+                {cate}
+              </span>
+            );
+          })}
+        </div>
+        <Link key={post._id} to={`/post/${post._id}`} className="link">
+          <span className="post_title">{post.title}</span>
+        </Link>
+        <span className="time">{new Date(post.createdAt).toDateString()}</span>
       </div>
-      <p className="postDesc">
-        Lorem iet, consectetur adipisicing elit. Assumenda officia architecto
-        deserunt deleniti? asasLabore ipsum aspernatur magnam fugiat,
-        reprehenderitasas praesentium blanditiis quos cupiditate ratione atque,
-        exerciLorem ipsum dolor sit amet, consectetur adipisicing elit.
-        Assumenda officia architecto deserunt deleniti? Labore ipsum aspernatur
-        magnam fugiat, reprehenderit praesentium blanditiis quos cupiditate
-        ratione atque, exerci
-      </p>
+      <p className="post_desc">{post.desc}</p>
     </div>
   );
 }

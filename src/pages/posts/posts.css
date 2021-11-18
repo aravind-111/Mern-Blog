@@ -1,6 +1,7 @@
 .posts {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
   flex: 9;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }

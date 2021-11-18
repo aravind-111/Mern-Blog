@@ -2,8 +2,8 @@ import { createContext, useEffect, useReducer } from "react";
 import Reducer from "./Reducer";
 
 const INITIAL_STATE = {
-  // user: JSON.parse(localStorage.getItem("user")) || null,
-  user: null,
+  user: JSON.parse(localStorage.getItem("user")) || null,
+  // user: null,
   isFetching: false,
   error: false,
 };

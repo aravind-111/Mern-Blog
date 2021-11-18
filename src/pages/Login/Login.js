@@ -18,10 +18,13 @@ function Login() {
     dispatch({ type: "LOGIN_START" });
     try {
       // console.log(userRef.current.value, passwordRef.current.value);
-      const res = await axios.post("http://localhost:3001/login", {
-        userName: userRef.current.value,
-        password: passwordRef.current.value,
-      });
+      const res = await axios.post(
+        "https://mern-blog-server-aravind.herokuapp.com/login",
+        {
+          userName: userRef.current.value,
+          password: passwordRef.current.value,
+        }
+      );
       console.log(res);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       userRef = "";

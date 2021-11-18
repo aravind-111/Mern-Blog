@@ -13,11 +13,14 @@ function Register() {
     event.preventDefault();
     try {
       setError(false);
-      const res = await axios.post("http://localhost:3001/register", {
-        userName,
-        email,
-        password,
-      });
+      const res = await axios.post(
+        "https://mern-blog-server-aravind.herokuapp.com/register",
+        {
+          userName,
+          email,
+          password,
+        }
+      );
       // after reg. switching the page to login
       res.data.details && window.location.replace("/login");
     } catch (err) {
